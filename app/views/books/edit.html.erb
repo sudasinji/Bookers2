@@ -1,0 +1,11 @@
+<%= render 'layouts/error', model:@book %>
+
+<h1>Editing Book</h1>
+<!-- form_for部分 -->
+<%= form_for(@book) do |f| %>
+    <h4>本のタイトル</h4>
+    <%= f.text_field :title %>
+    <h4>本の感想</h4>
+    <%= f.text_area :body %>
+    <%= f.submit '保存' %>
+<% end %>

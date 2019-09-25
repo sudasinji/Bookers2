@@ -1,0 +1,19 @@
+<%= render 'layouts/error', model:@user %>
+
+<h1>User info</h1>
+<!-- form_for部分 -->
+<%= form_for(@user) do |f| %>
+ 
+  <h4>Name</h4>
+  <%= f.text_field :name %>
+ 
+  <h4>Introduction</h4>
+  <%= f.text_area :introduction %>
+ 
+  <!-- 追加部分 -->
+  <h4>image</h4>
+  <%= f.attachment_field :profile_image %>
+ 
+  <%= f.submit  %>
+ 
+<% end %>

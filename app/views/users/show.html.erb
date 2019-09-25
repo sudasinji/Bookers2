@@ -1,0 +1,70 @@
+  	<div class="container">
+  		<div class="row">
+  	<div class='col-lg-3'>
+    <h2>User info</h2>
+<%= attachment_image_tag @user, :profile_image, style: "width:100px; height:100px;",format: 'jpeg', fallback: "no_image.jpg" %>
+    	<table class="table">
+    		
+    	<tr>
+    	  <th>name</th>
+    	  <td><%= current_user.name %></td>
+      </tr>
+           <tr>
+    	  <th>introduction</th>
+    	  <td><%= @user.introduction %></td>
+      </tr>
+  </table>
+      	<%= link_to '', edit_user_path(@user), class: "btn btn-default glyphicon glyphicon-wrench col-xs-12" %>
+      
+   
+<h2>New Book</h2>
+    <%= form_for(@book) do |f| %>
+
+
+
+    <label for="book_title">本のタイトル</label>
+    <br>
+    <%= f.text_field :title %><br>
+
+    <label for="book_opinion">本の感想</label>
+    <br>
+    <%= f.text_area :body %><br>
+
+    <%= f.submit %>
+  	<% end %>
+    </div>
+  <div class='col-lg-9'>
+    <h2>Books</h2>
+
+    <table class="table table-hover">
+  <thead>
+    <tr> 
+      <th>image</th>
+      <th>本のタイトル</th>
+      <th>本の感想</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @user.books.each do |book| %>
+      	<tr>
+	  	<td>	<%= attachment_image_tag book.user, :profile_image, style: "width:50px; height:50px;",format: 'jpeg', fallback: "no_image.jpg" %>	</td>
+      	<td>	<%= link_to book.title, book_path(book) %>
+      	</td>
+      	<td>	<%= book.body %> </td>
+      	</tr>
+      <% end %>
+  </tbody>
+</table>
+  </div>
+</div>
+</div>
+
+    <footer>
+  <div class='container'>
+  	<div class='row'>
+    	<div class='col-xs-3 col-xs-offset-9'>
+    		<p>CopyRight Infratop.inc</p>
+    	</div>
+    </div>
+  </div>
+</footer>
